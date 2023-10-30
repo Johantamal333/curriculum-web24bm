@@ -1,0 +1,42 @@
+﻿@model Curriculum.Models.Usuario
+@{
+    ViewData["Title"] = "Agregar nuevo curriculum";
+}
+
+<h1 class=" text-center"> Visualizar curriculum  </h1>
+
+<div class="row">
+    <div class="offset-12">
+        <div class="card border">
+            <div class="card-header bg-dark">
+                <h3 text-white><strong>Ver Curriculum </strong></h3>
+
+            </div>
+            <div class="card-body">
+                <ul class="list-gruop">
+                    <li class="list-group-item"><strong>Nacimiento: </strong>@Html.DisplayFor(m => m.FechaNacimiento)</li>
+                    <li class="list-group-item"><strong>Nombre: </strong>@Html.DisplayFor(m => m.Nombre)</li>
+                    <li class="list-group-item"><strong>Apellido: </strong>@Html.DisplayFor(m => m.Apellido)</li>
+                    <li class="list-group-item"><strong>Direccion: </strong>@Html.DisplayFor(m => m.Direccion)</li>
+                    <li class="list-group-item"><strong>Correo: </strong>@Html.DisplayFor(m => m.Correo)</li>
+                    <li class="list-group-item"><strong>Experiencia: </strong>@Html.DisplayFor(m => m.Experiencia)</li>
+                    <li class="list-group-item"><strong>Estudios: </strong>@Html.DisplayFor(m => m.Estudios)</li>
+                    <li class="list-group-item"><strong>Habilidades: </strong>@Html.DisplayFor(m => m.Habilidades)</li>
+                    <li class="list-group-item">
+                        <strong>Imagen de Perfil:</strong>
+                        @if (Model.ImagenPerfil != null && Model.ImagenPerfil.Length > 0)
+                        {
+                            <img src="data:image;base64,@(Convert.ToBase64String(Model.ImagenPerfil))" alt="Imagen de Perfil" class="img-fluid" />
+                        }
+                        else
+                        {
+                            <span>No hay imagen de perfil</span>
+                        }
+                    </li>
+                </ul>
+                <a asp-controller="Inicio" asp-action="Index">Regresar</a>
+
+            </div>
+        </div>
+    </div>
+</div>

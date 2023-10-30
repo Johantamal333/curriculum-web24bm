@@ -1,0 +1,103 @@
+﻿@model IEnumerable<Curriculum.Models.Usuario>
+@{
+    ViewData["Title"] = "Lista de curriculum";
+}
+
+<h1 class=" text-center"> Lista de curriculum con la fruncionalidad CRUD   </h1>
+<div class="row">
+    <div class="offset-9 col-3 mb-3" >
+        <a asp-action="crear" asp-controller="inicio" class="btn btn-secondary d-block mx-auto btn-lg">Nuevo curriculum</a>
+
+    </div>
+</div>
+<div class="row">
+    <div class="offset-12">
+        <div class="card border">
+            <div class="card-header bg-dark">
+                <h3 text-white><strong>Postulados </strong></h3>
+
+            </div>
+              <div class="card-body">
+                  <div class="table-responsive">
+                      @if(Model.Count()>0)
+                    {
+                        <table class="table table-bordered" id="tblPostulados" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>@Html.DisplayNameFor(m => m.Id)</th>
+                                    <th>@Html.DisplayNameFor(m => m.FechaNacimiento)</th>
+                                    <th>@Html.DisplayNameFor(m => m.Nombre)</th>
+                                    <th>@Html.DisplayNameFor(m => m.Apellido)</th>
+                                    <th>@Html.DisplayNameFor(m => m.Direccion)</th>
+                                    <th>@Html.DisplayNameFor(m => m.Correo)</th>
+                                    <th>@Html.DisplayNameFor(m => m.Experiencia)</th>
+                                    <th>@Html.DisplayNameFor(m => m.Estudios)</th>
+                                    <th>@Html.DisplayNameFor(m => m.Habilidades)</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody> 
+                                @foreach(var item in Model)
+                                {
+                                    <tr>
+                                        <td>@Html.DisplayFor(m => item.Id)</td>
+                                        <td>@Html.DisplayFor(m => item.FechaNacimiento)</td>
+                                        <td>@Html.DisplayFor(m => item.Nombre)</td>
+                                        <td>@Html.DisplayFor(m => item.Apellido)</td>
+                                        <td>@Html.DisplayFor(m => item.Direccion)</td>
+                                        <td>@Html.DisplayFor(m => item.Correo)</td>
+                                        <td>@Html.DisplayFor(m => item.Experiencia)</td>
+                                        <td>@Html.DisplayFor(m => item.Estudios)</td>
+                                        <td>@Html.DisplayFor(m => item.Habilidades)</td>
+                                        <td class="d-flex justify-content-between align-items-center">
+                                            <a class="btn btn-warning" asp-action="Editar" asp-route-id="@item.Id">Editar Curriculum</a>
+                                            <a class="btn btn-secondary" asp-action="Ver" asp-route-id="@item.Id">Ver curriculum</a>
+                                            <a class="btn btn-danger" asp-action="Eliminar" asp-route-id="@item.Id">Eliminar curriculum</a>
+                                        </td>
+                                    </tr>
+                                    
+                                }
+                            </tbody>
+                        </table>
+                    } 
+                    else
+                    {
+                    <p> No hay ningun registro</p>
+                    }
+                    
+                    
+                </div>
+
+                </div>
+        </div>
+    </div>
+</div>
+@section Scripts{
+    <script>
+        $(document).ready(function () {
+            //se llama a datatable
+            $('#tblPostulados').DataTable({
+                languague: {
+                    "decimal": "",
+                    "emptyTable": "No hay informacion",
+                    "info": "Mostrando _START_ a _END_ de _TOTAL_ Entradas",
+                    "infoEmpty": "Mostrando 0 to 0 of Entradas",
+                    "infoFiltered": "(Filtardo de _MAX_ total entradas)",
+                    "infoPostFix": "",
+                    "thousands": ",",
+                    "lenghtMenu": "Mostrar _MENU_ Entradas",
+                    "loadingRecords": "Cargando...",
+                    "processing": " Procesando...",
+                    "search": "Buscar:",
+                    "zeroRecords": "Sin resultados encontrados",
+                    "paginate": {
+                        "first": "Primero",
+                        "last": "Ultimo",
+                        "next": "siguiente"
+                        "previous": "anterior"
+                    }
+                }
+            });
+        });
+    </script>
+}

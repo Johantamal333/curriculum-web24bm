@@ -1,0 +1,81 @@
+﻿@model Curriculum.Models.Usuario
+@{
+    ViewData["Title"] = "Eliminar  curriculum";
+}
+
+<h1 class=" text-center"> Eliminar curriculum  </h1>
+
+<div class="row">
+    <div class="offset-12">
+        <div class="card border">
+            <div class="card-header bg-dark">
+                <h3 text-white><strong>Eliminar Curriculum </strong></h3>
+
+            </div>
+            <div class="card-body">
+                <form asp-action="eliminar">
+
+
+                    <input type="hidden" asp-for="Id" />
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="FechaNacimiento" class="control-label"></label>
+                        <input asp-for="FechaNacimiento" class="form-control" readonly />
+                        <span asp-validation-for="FechaNacimiento" class="text-danger"> </span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Nombre" class="control-label"></label>
+                        <input asp-for="Nombre" class="form-control" readonly />
+                        <span asp-validation-for="Nombre" class="text-danger"> </span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Apellido" class="control-label"></label>
+                        <input asp-for="Apellido" class="form-control" readonly />
+                        <span asp-validation-for="Apellido" class="text-danger"> </span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Direccion" class="control-label"></label>
+                        <input asp-for="Direccion" class="form-control" readonly />
+                        <span asp-validation-for="Direccion" class="text-danger"> </span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Correo" class="control-label"></label>
+                        <input asp-for="Correo" class="form-control" readonly />
+                        <span asp-validation-for="Correo" class="text-danger"> </span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Experiencia" class="control-label"></label>
+                        <input asp-for="Experiencia" class="form-control" readonly />
+                        <span asp-validation-for="Experiencia" class="text-danger"> </span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Estudios" class="control-label"></label>
+                        <input asp-for="Estudios" class="form-control" readonly />
+                        <span asp-validation-for="Estudios" class="text-danger"> </span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Habilidades" class="control-label"></label>
+                        <input asp-for="Habilidades" class="form-control" readonly/>
+                        <span asp-validation-for="Habilidades" class="text-danger"> </span>
+                    </div>
+                    <div class="form-group mt-3">
+                        <button type="submit" class=" btn btn-primary d-block mx-auto"> Eliminar</button>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="ImagenPerfil" class="control-label"></label>
+                        @if (Model.ImagenPerfil != null && Model.ImagenPerfil.Length > 0)
+                        {
+                            <img src="data:image;base64,@(Convert.ToBase64String(Model.ImagenPerfil))" alt="Imagen de Perfil" class="img-fluid" />
+                        }
+                        else
+                        {
+                            <span>No hay imagen de perfil</span>
+                        }
+                    </div>
+                </form>
+                <a asp-controller="Inicio" asp-action="Index">Regresar</a>
+
+            </div>
+        </div>
+    </div>
+</div>
