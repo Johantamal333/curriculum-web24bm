@@ -30,8 +30,9 @@ namespace Curriculum.Models
 
         [Required(ErrorMessage = "Campo obligatorio")]
         public string Habilidades { get; set; }
-        [Display(Name = "Imagen de Perfil")]
-        [DataType(DataType.Upload)]
+        [Required]
+        public string CURP { get; set; }
+        
         public byte[] ImagenPerfil { get; set; }
 
     }
